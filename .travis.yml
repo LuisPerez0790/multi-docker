@@ -14,4 +14,9 @@ after_success:
   - docker build -t luisperez992/multi-server ./server
   - docker build -t luisperez992/multi-worker ./worker
 
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push luisperez992/multi-client
+  - docker push luisperez992/multi-nginx
+  - docker push luisperez992/multi-server
+  - docker push luisperez992/multi-worker
 
